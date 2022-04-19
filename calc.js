@@ -1,61 +1,65 @@
-let displayText = ''
-let inputText
-let finalRes = ''
-let locker
+let displayText = ''; let inputText; let calcString = ''; // main strings
+let finalRes = ''; // salvar valor
+let locker = false; // impedir digitação de dois operadores (inicia como falso para ser possível inserir o - inicialmente)
 
 function typing(inputText){
-    if(typeof(inputText) == 'number'){
-        displayText += inputText // concatena a string já existente com o valor adquirido
-        document.getElementById("display").value = displayText // printa a string no display
-        locker = false //atribui false ao bool de trava para a troca de caracteres
-    }
 
-    else{
-        if(locker == false){ //caso o bool seja falso, apenas adiciona o caractere e seta como true
+    if(typeof(inputText) == 'number'){ // para números:
+        displayText += inputText; // concatena o numero no string de exibição
+        calcString += inputText; // concatena o numero no string de calculo
+        locker = false; // deixa o estado do locker em falso, para permitir a digitação de outro operador
+    } 
 
+    else{ // para operadores:
+        if(!locker){ // caso um operador ainda não tenha sido escolhido
             if(inputText == '^'){
-                
+                calcString += '**'; // caso seja escolhida a função potência, concatena ** (pow)
+            } else{
+                calcString += inputText; // caso contrário, apenas realiza o procedimento padrão
             }
-
-            else if(inputText == '√'){
-                
-            }
-
-            else{
-                displayText += inputText
-                document.getElementById("display").value = displayText
-                locker = true
-            }
+            displayText += inputText; // concatena o operador no string de exibição
+            locker = true; // trava o bool, assim o código irá entrar no else caso outro operador seja inserido
         }
 
-        else{ //caso o bool seja true, substitui o ultimo caractere que será um operador por outro digitado
-            displayText = displayText.replace(/.$/, inputText)
-            document.getElementById("display").value = displayText
+        else{ //caso um operador já tenha sido escolhido
+            displayText = displayText.replace(/.$/, inputText); // troca o ultimo operador pelo selecionado
+            if(calcString.slice(-2)=='**'){ // caso o ultimo operador tenha sido potência (string de calculo recebeu **)
+                calcString = calcString.slice(0, -2); // remove os dois últimos caracteres
+                calcString+= inputText; // e insere o novo
+            }   else{
+                calcString = calcString.replace(/.$/, inputText);                
+            }
         }
-
     }
+    document.getElementById("display").value = displayText; // printa a string de exibição ao final
 }
 
 function res(){
-    finalRes = eval(displayText) //faz o calculo da string e guarda na variavel finalRes
-    displayText = finalRes.toString() //atribui o valor do resultado final para a string
-    document.getElementById("display").value = displayText // printa a string no display
+    calcString = displayText = finalRes = eval(calcString); // calcula o valor final e armazena
+    document.getElementById("display").value = displayText; // printa a string de exibição ao final
 }
 
 function clearText(){
-    displayText = '' //atribui um valor sem caracteres a string 
-    document.getElementById("display").value = displayText //printa a string no display
-    
+    document.getElementById("display").value = displayText = calcString = '' // limpa todas as variáveis
 }
 
 function removeLast(){
-    if(displayText != finalRes){ //caso o valor do display seja diferente do valor final
-        displayText = displayText.replace(/.$/, '') //remove o ultimo caractere da string
-        document.getElementById("display").value = displayText //printa a string  no display
+    
+    if(displayText != finalRes){
+
+        displayText = displayText.replace(/.$/, ''); // remove o ultimo caractere da string de exibição
+
+        if(calcString.slice(-2)=='**'){ // caso o ultimo operador tenha sido potência (string de calculo recebeu **)
+            calcString = calcString.slice(0, -2); // remove os dois últimos caracteres da string de cálculo
+        }   else{ //caso tenha sido outro operador
+            calcString = calcString.replace(/.$/, '');  // remove o ultimo caractere da string de cálculo
+        }
     }
 
-    else{ //caso o valor do display seja igual ao valor final
-        clearText() //chama a função de limpar tela
+    else{ //se o valor digitado for igual ao resultado, limpa tudo
+        clearText()
     }
-    locker = false
+
+    document.getElementById("display").value = displayText; // printa a string de exibição ao final
+    locker = false // destrava o locker
 }
