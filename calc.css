@@ -1,62 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 
-*{
-    margin: 0px;
-    padding: 0px;
+* {
+  margin: 0px;
+  padding: 0px;
 }
 
-body{
-    background-color: #deb887;
-    font-family: 'Orbitron', sans-serif;
-    text-align:center;
+body {
+  background-color: #deb887;
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
 }
 
-#background{
-    display: inline-block;
-    background-color: #dda965;
-    margin: 10px auto;
-    border-radius: 30px;
-    padding: 10px 5px 0px 5px;
+#background {
+  display: inline-block;
+  background-color: #dda965;
+  margin: 10px auto;
+  border-radius: 30px;
+  padding: 10px 5px 0px 5px;
 }
 
-#display{
-    display: block;
-    background-color: rgb(127, 255, 212, 0.6);
-    width: 90%;
-    height: 2em;
-    border-radius: 30px;
-    text-align: right;
-    margin: auto;
-    font-family: inherit;
-    font-size: 1.5em;
+#display {
+  display: block;
+  background-color: rgb(127, 255, 212, 0.6);
+  width: 90%;
+  height: 2em;
+  border-radius: 30px;
+  text-align: right;
+  margin: auto;
+  font-family: inherit;
+  font-size: 1.5em;
 }
 
-#button-grid{
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    grid-gap: 5%;
-    margin: 5%;
-    margin-bottom: 40px;
+#button-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-gap: 5%;
+  margin: 5%;
+  margin-bottom: 40px;
 }
 
-.button{
-    display: block;
-    width: 100%;
-    background-color: #d68720;
-    text-align: center;
-    border: none;
-    border-radius: 10px;
-    font-family: inherit;
-    font-size: 2em;
-  
+.button {
+  display: block;
+  width: 100%;
+  background-color: #d68720;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 2em;
 }
 
-.button:hover{
-    background-color: rgb(0, 0, 0, 0.2);
-    cursor: pointer;
+.button:hover {
+  background-color: rgb(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
-.button:active{
-    background-color: rgb(0, 0, 0, 0.5);
-    cursor: pointer;
+.button:active {
+  background-color: rgb(0, 0, 0, 0.5);
+  cursor: pointer;
 }
