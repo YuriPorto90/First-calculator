@@ -60,7 +60,6 @@ function typing(inputText) {
     }
   }
   document.getElementById("display").value = displayText; // printa a string de exibição ao final
-  console.log(calcString);
 }
 
 function res() {
@@ -104,7 +103,6 @@ function removeLast() {
     //se o valor digitado for igual ao resultado, limpa tudo
     clearText();
   }
-  console.log(calcString);
   document.getElementById("display").value = displayText; // printa a string de exibição ao final
   locker = false; // destrava o locker
 }
