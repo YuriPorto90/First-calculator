@@ -93,7 +93,11 @@ function removeLast() {
         lock = calcString.slice(-1);
         calcString = calcString.replace(/.$/, ""); // remove o ultimo caractere da string de cálculo
       }
-      displayText = displayText.replace(/.$/, ""); // remove o caractere de raiz da exibição
+      for (let i = 0; lock != "√"; i++) {
+        lock = displayText.slice(-1);
+        displayText = displayText.replace(/.$/, ""); // remove o caractere de raiz da exibição
+      }
+      
       isSqrt = false;
     } else {
       //caso tenha sido outro operador ou um numero
