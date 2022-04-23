@@ -44,7 +44,11 @@ function typing(inputText) {
       if (calcString.slice(-2) == "**") {
         // caso o ultimo operador tenha sido potência (string de calculo recebeu **)
         calcString = calcString.slice(0, -2); // remove os dois últimos caracteres
-        calcString += inputText; // e insere o novo
+        if (inputText == "^") {
+          calcString += "**"; // caso seja escolhida a função potência, concatena ** (pow)
+        } else {
+          calcString += inputText; // caso contrário, apenas realiza o procedimento padrão
+        }
       } else if (calcString.slice(-1) == "(") {
         // caso o ultimo operador tenha sido raiz (string de calculo recebeu '*(' )
         calcString = calcString.slice(0, -1); // remove os dois últimos caracteres
